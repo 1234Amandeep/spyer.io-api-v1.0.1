@@ -9,8 +9,8 @@ module.exports.checkUser = async (req, res, next) => {
 
   if (token) {
     // verifying jwt token
-    // jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
-    jwt.verify(token, "spyer.io", async (err, decodedToken) => {
+    // jwt.verify(token, "spyer.io", async (err, decodedToken) => {
+    jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
       if (err) {
         // token exist but not valid so user is not logged in
         res.status(200).json({ user: null, msg: "token is invalid" });
