@@ -34,7 +34,7 @@ mongoose
   .connect(db_uri)
   .then(() => {
     app.listen("3000", () => {
-      console.log("After connecting to auth db, listening at port 4000...");
+      console.log("After connecting to auth db, listening at port 3000...");
     });
   })
   .catch((err) => {

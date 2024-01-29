@@ -39,8 +39,8 @@ const maxAge = 3 * 24 * 60 * 60;
 // creating fn to create Token
 const createToken = (id) => {
   console.log("id:", id);
-  return jwt.sign({ id }, "spyer.io", { expiresIn: maxAge });
-  // return jwt.sign({ id }, process.env.SECRET_KEY, { expiresIn: maxAge });
+  // return jwt.sign({ id }, "spyer.io", { expiresIn: maxAge });
+  return jwt.sign({ id }, process.env.SECRET_KEY, { expiresIn: maxAge });
 };
 
 module.exports.signup_post = async (req, res) => {
@@ -87,13 +87,13 @@ module.exports.login_post = async (req, res) => {
       console.log("token:", token);
 
       res.cookie("jwt", token, {
+        // httpOnly: true,
+        // maxAge: maxAge * 1000,
         httpOnly: true,
         maxAge: maxAge * 1000,
+        sameSite: "None",
+        secure: true,
       });
-      // httpOnly: true,
-      // maxAge: maxAge * 1000,
-      // sameSite: "None",
-      // secure: true,
       res
         .status(200)
         .json({ _id: user._id, email: user.email, favList: user.favList });
