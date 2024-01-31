@@ -36,7 +36,7 @@ const app = express();
 // };
 
 // middleware
-app.use(cors(corsOptions));
+app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(fetchRouter);
