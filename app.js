@@ -10,6 +10,18 @@ require("dotenv").config();
 
 mongoose.set("strictQuery", true);
 
+// cors experimenting
+var allowlist = ['http://example1.com', 'http://example2.com']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
 const db_uri =
   "mongodb+srv://1234amandeep:ilovefootball%401234@spyer.dtt7kqo.mongodb.net/auth?retryWrites=true&w=majority";
 
@@ -17,11 +29,11 @@ console.log(process.env.DB_URI);
 
 const app = express();
 
-const corsOptions = {
-  origin: true,
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: true,
+//   credentials: true,
+//   optionsSuccessStatus: 200,
+// };
 
 // middleware
 app.use(cors(corsOptions));
@@ -42,4 +54,4 @@ mongoose
   });
 
 // basic routes
-app.get("/root", authMiddleware.checkUser);
+app.get("/root", cors(corsOptionsDelegate), authMiddleware.checkUser);
