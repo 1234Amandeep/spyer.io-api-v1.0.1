@@ -18,6 +18,8 @@ module.exports.checkUser = async (req, res, next) => {
       } else {
         // token exist and its valid so user is logged in
         const user = await userModel.findById(decodedToken.id);
+        console.log(user);
+
         res.status(200).json({
           user: { _id: user._id, email: user.email, favList: user.favList },
         });

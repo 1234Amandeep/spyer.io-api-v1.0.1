@@ -45,6 +45,7 @@ const createToken = (id) => {
 
 module.exports.signup_post = async (req, res) => {
   const { email, password, favList } = req.body;
+  console.log(email, password);
 
   try {
     // adding user to db
