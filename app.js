@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require('dotenv').config()
 const mongoose = require("mongoose");
 const fetchRouter = require("./routes/fetchRoutes");
 const authRouter = require("./routes/authRoutes");
@@ -9,6 +10,7 @@ const authMiddleware = require("./middleware/authMiddleware");
 require("dotenv").config();
 
 mongoose.set("strictQuery", true);
+
 
 const db_uri =
   "mongodb+srv://1234amandeep:ilovefootball%401234@spyer.dtt7kqo.mongodb.net/auth?retryWrites=true&w=majority";
@@ -30,11 +32,13 @@ app.use(cookieParser());
 app.use(fetchRouter);
 app.use(authRouter);
 
+
+
 mongoose
   .connect(db_uri)
   .then(() => {
-    app.listen("3000", () => {
-      console.log("After connecting to auth db, listening at port 3000...");
+    app.listen(process.env.PORT, () => {
+      console.log(`After connecting to auth db, listening at port ${process.env.PORT}...`);
     });
   })
   .catch((err) => {
@@ -42,4 +46,4 @@ mongoose
   });
 
 // basic routes
-app.get("/root", authMiddleware.checkUser);
+app.get("/api/root", authMiddleware.checkUser);
