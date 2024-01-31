@@ -19,14 +19,14 @@ console.log(process.env.DB_URI);
 
 const app = express();
 
-// const corsOptions = ;
-
-// middleware
-app.use(cors({
-  origin: "*",
+const corsOptions = {
+  origin: true,
   credentials: true,
   optionsSuccessStatus: 200,
-}));
+};
+
+// middleware
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(fetchRouter);
