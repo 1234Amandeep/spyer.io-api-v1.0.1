@@ -7,16 +7,16 @@ const router = express.Router();
 
 // Routes
 
-router.get("/fetch/:playerName", fetchController.fetch_get);
+router.get("/api/fetch/:playerName", fetchController.fetch_get);
 
 // add to whishlist route
 
 router.post(
-  "/addToWishlist",
+  "/api/addToWishlist",
   // authMiddleware.requireAuth,
   dbInterController.addToWishlist_post
 );
 
-router.post("/removeFromWishlist", dbInterController.removeFromWishlist_post);
+router.post("/api/removeFromWishlist", dbInterController.removeFromWishlist_post);
 
 module.exports = router;
