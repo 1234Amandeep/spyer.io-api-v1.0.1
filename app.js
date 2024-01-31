@@ -24,8 +24,8 @@ const app = express();
 // middleware
 app.use(cors({
   origin: "*",
-  // credentials: true,
-  // optionsSuccessStatus: 200,
+  credentials: true,
+  optionsSuccessStatus: 200,
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
