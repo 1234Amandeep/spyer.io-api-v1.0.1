@@ -46,4 +46,4 @@ mongoose
   });
 
 // basic routes
-app.get("/root", authMiddleware.checkUser);
+app.get("/api/root", authMiddleware.checkUser);
