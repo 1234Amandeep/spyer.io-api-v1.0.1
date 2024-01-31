@@ -36,6 +36,7 @@ var corsOptionsDelegate = function (req, callback) {
 };
 
 // middleware
+app.options("*", cors());
 app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.json());
 app.use(cookieParser());
