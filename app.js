@@ -20,7 +20,7 @@ console.log(process.env.DB_URI);
 const app = express();
 
 const corsOptions = {
-  origin: true,
+  origin: "*",
   credentials: true,
   optionsSuccessStatus: 200,
 };
