@@ -11,7 +11,7 @@ require("dotenv").config();
 mongoose.set("strictQuery", true);
 
 // cors experimenting
-var allowlist = ['http://example1.com', 'http://example2.com']
+var allowlist = ['https://spyer-io-v1-0-1.web.app/root', 'https://spyer-io-v1-0-1.web.app/signup', 'https://spyer-io-v1-0-1.web.app/login', 'https://spyer-io-v1-0-1.web.app/logout', 'https://spyer-io-v1-0-1.web.app/fetch/:playerName', 'https://spyer-io-v1-0-1.web.app/addToWishlist', 'https://spyer-io-v1-0-1.web.app/removeFromWishlist']
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (allowlist.indexOf(req.header('Origin')) !== -1) {
