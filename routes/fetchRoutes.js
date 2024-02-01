@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Routes
 
-router.get("fetch/:playerName", fetchController.fetch_get);
+router.get("/fetch/:playerName", fetchController.fetch_get);
 
 // add to whishlist route
 
