@@ -12,7 +12,7 @@ module.exports.addToWishlist_post = async (req, res) => {
     // verifying jwt token
     jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
       if (err) {
-        // token exist but not valid so user is not logged in
+        // token exist but not valid so user is not logged in...
         res.status(200).json({ user: null });
       } else {
         // token exist and its valid so user is logged in
