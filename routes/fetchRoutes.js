@@ -17,6 +17,8 @@ router.post(
   dbInterController.addToWishlist_post
 );
 
+// remove from whishlist route
+
 router.post("/removeFromWishlist", dbInterController.removeFromWishlist_post);
 
 module.exports = router;

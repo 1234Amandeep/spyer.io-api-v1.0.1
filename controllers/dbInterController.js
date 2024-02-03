@@ -1,5 +1,6 @@
 const userModel = require("../models/user");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports.addToWishlist_post = async (req, res) => {
   const favList = req.body.favList;
@@ -39,10 +40,10 @@ module.exports.removeFromWishlist_post = async (req, res) => {
 
   if (token) {
     // verifying jwt token
-    jwt.verify(token, "spyer.io", async (err, decodedToken) => {
+    jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
       if (err) {
         // token exist but not valid so user is not logged in
-        res.status(200).json({ user: null });
+        res.status(200).json({ user: null, hey: "heloo world" });
       } else {
         // token exist and its valid so user is logged in
         const user = await userModel.findByIdAndUpdate(decodedToken.id, {
